@@ -1,12 +1,28 @@
-<!DOCTYPE html>
 <html>
-<head>
-	<meta charset="UTF-8">
-	<title>Project</title>
-	<link rel="stylesheet" type="text/css" href="css/app.css">
-</head>
-<body>
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<!-- inject:css --> 
+	  	<link rel="stylesheet" href="/assets/css/bower/bootstrap.css"> 
+	  	<link rel="stylesheet" href="/assets/css/bower/font-awesome.css"> 
+	  	<!-- endinject -->
 
-	<script src="js/app.js"></script>
-</body>
+		<!-- inject:js -->
+		<script src="/assets/js/bower/angular.js"></script>
+		<script src="/assets/js/bower/bootstrap.js"></script>
+		<script src="/assets/js/bower/jquery.js"></script>
+		<!-- endinject -->
+	</head>
+	<body>
+		<div>sekarang belajar inject file dari gulp ke html</div>
+		<div class="jumbotron text-center">
+			<h1>About Page</h1>
+			<button ng-click="simpan('about')"> Click about</button>
+			<button ng-click="simpanAbout('about')"> Click about</button>
+		</div>
+
+	<!-- inject:body:js -->
+  	<script src="/public/assets/js/app.js"></script>
+  	<!-- endinject -->
+  	</body>
 </html>
