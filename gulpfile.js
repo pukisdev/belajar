@@ -1,5 +1,5 @@
-var gulp = require('gulp');
-var inject		= require('gulp-inject');
+var gulp 			= require('gulp');
+var angularFilesort = require('gulp-angular-filesort'), inject = require('gulp-inject');
 
 var config = {
 	bowerDir 	: './bower_components',
@@ -41,21 +41,7 @@ gulp.task('js', function(){
 	return true;
 });
 
-gulp.task('html', function(){
-	return true;
-	// return gulp
-	// 	.src([config.assets+'/html/index.html'])
-	// 	.pipe(gulp.dest(config.public));
-});
-
-gulp.task('index', ['html'], function(){
-
-// var injectOptions = {
-//      ignorePath: 'dist/'
-//      addRootSlash: false,
-//      // read : false,
-//      // relative: true,
-// };
+gulp.task('inject1', function(){
 
 	return gulp
 		.src([config.assets+'/html/index.html'])
@@ -63,24 +49,33 @@ gulp.task('index', ['html'], function(){
 			inject(
 				gulp.src([
 					config.public+'/assets/css/bower/*.css',
+				])
+				// .pipe(angularFilesort())
+				, {ignorePath: 'public/'}
+			) 
+		)
+		.pipe(
+			inject(
+				gulp.src([
+					// config.public+'/assets/css/bower/*.css',
 					config.public+'/assets/js/bower/*.js',
-				], {read : false})
-				// , {relative: true}
-				, {ignorePath: 'public/'}//, {addRootSlash: false}
+					// config.public+'/assets/js/*.js',
+				])
+				.pipe(angularFilesort())
+				, {ignorePath: 'public/'}
 			) 
 		)
 		.pipe(
 			inject(
 				gulp.src([
 					config.public+'/assets/js/*.js',
-				], {read : false})
-				, {starttag: '<!-- inject:body:{{ext}} -->'}
-				// , {relative: true}
-				, {ignorePath: 'public/'}
-				// , {addRootSlash: false}
+				])
+				.pipe(angularFilesort())
+				, {ignorePath: 'public/', starttag: '<!-- inject:body:{{ext}} -->'}
 			)
 		)
 		.pipe(gulp.dest(config.public));
 });
 
-gulp.task('default',['fonts','css','js','index']);//,'watch'*/
+
+gulp.task('default',['fonts','css','js','inject1']);
