@@ -1,6 +1,6 @@
 /**** script javascript ***/
 var app = angular
-          .module('appRoot')//, ['ngMessages','angularUtils.directives.dirPagination','ngRoute', 'currencyMask', 'ui.bootstrap'])
+          .module('appRoot', ['ngCookies'])//, ['ngMessages','angularUtils.directives.dirPagination','ngRoute', 'currencyMask', 'ui.bootstrap'])
           .config(function($interpolateProvider){
               $interpolateProvider.startSymbol('[[');
               $interpolateProvider.endSymbol(']]');

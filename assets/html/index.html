@@ -10,15 +10,19 @@
 		<!-- endinject -->
 	</head>
 	<body>
-		<div>sekarang belajar inject file dari gulp ke html</div>
-		<div class="jumbotron text-center">
-			<h1>About Page</h1>
-			<button ng-click="simpan('about')"> Click about</button>
+		<div class="jumbotron text-center" ng-controller="homeController">
+			<h1>Abouts Page</h1>
+			<div>sekarang belajar inject file dari gulp ke html</div>
+			<button ng-click="simpan('simpan')"> Click about</button>
 			<button ng-click="simpanAbout('about')"> Click about</button>
 		</div>
 
 	<!-- inject:body:js -->
   	<!-- only importantFile.js will be injected here -->
   	<!-- endinject -->
+
+  	<!-- selain dari gulp generate -->
+	<script src="/assets/js/modules/sites/homeController.js"></script>
+  	<!-- -->
   	</body>
 </html>
